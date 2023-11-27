@@ -1,14 +1,4 @@
-// atualizarIcon = ()=>{
-//     [...document.querySelectorAll(".caixa")].forEach(caixa => {
-//         caixa.addEventListener("click", (e) => {
-//             e.preventDefault()
-//             const icone = caixa.querySelector("#icone")
-//             icone.classList.toggle("fa-regular")
-//             icone.classList.toggle("fa-solid")
-//             console.log(icone)
-//         })
-//     })
-// }
+
 
 atualizarIcon=() =>{
   const caixas = [...document.querySelectorAll(".caixa")];
@@ -34,7 +24,7 @@ atualizarIcon=() =>{
     });
   });
 }
-
+//import "./script.js";
 
 
 
@@ -83,11 +73,12 @@ const objeto1 = {
   };
   
 
-  // const listaDeFeedbacks = [objeto1, objeto2, objeto3, objeto4, objeto5, objeto6];
+  const listaDeFeedbacks2 = [objeto1, objeto2, objeto3, objeto4, objeto5, objeto6];
   
-if (listaDeFeedbacks.length > 0) {
+if (listaDeFeedbacks2.length > 0) {
     //pegar conteiner e trocar a cor de fundo para aparecer
     const container = document.querySelector("#feed")
+    container.classList.remove("d-none")
     container.classList.add("bg-green")
 
     // criar linha principal com suas classes e adicionar ao container
@@ -96,8 +87,9 @@ if (listaDeFeedbacks.length > 0) {
     container.appendChild(linhaPrincipal)
 
     // criando div esquerda e direita para dentro da linha principal
-    const esquerda = document.createElement("div")
-    const direita = document.createElement("div")
+    
+    const esquerda = document.querySelector(".esquerda")
+    const direita = document.querySelector(".direita")
 
     esquerda.setAttribute("class","col-md-6 esquerda")
     direita.setAttribute("class","col-md-6 direita")
@@ -106,7 +98,7 @@ if (listaDeFeedbacks.length > 0) {
     linhaPrincipal.appendChild(direita)
 
 
-    listaDeFeedbacks.map((objetofeedback, indice)=>{
+    listaDeFeedbacks2.map((objetofeedback, indice)=>{
         //criando card
         const card = document.createElement("div")
         card.setAttribute("class","card bg-light pt-2 mb-4")
@@ -137,7 +129,7 @@ if (listaDeFeedbacks.length > 0) {
         const span = document.createElement("span")
         span.setAttribute("class","caixa bg-green p-3")
         span.setAttribute("style","ax-width: 5rem; border-radius: 20px")
-        span.setAttribute("id","caixa")
+        //span.setAttribute("id","caixa")
         // criando icone
         const icon = document.createElement("i")
         icon.setAttribute("class","fa-2x fa-regular fa-thumbs-up")
@@ -178,7 +170,7 @@ if (listaDeFeedbacks.length > 0) {
          //adicionando as duas colunas ao card
          linha.appendChild(colunaCurtidas)
          linha.appendChild(colunaFeedback)
-
+         
     })
     atualizarIcon()
 }

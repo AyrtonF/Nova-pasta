@@ -1,114 +1,118 @@
 document.addEventListener("DOMContentLoaded", function () {
-  const listaDeFeedbacks = [];
-
+  let listaDeFeedbacks = [];
   let contador = 0;
 
-  // Adicione a seguinte função para atualizar curtidas via API
-async function atualizarCurtidas(feedbackId) {
-  const response = await fetch(`/update-curtidas/${feedbackId}`, {
-    method: "PUT",
-  });
+ 
+  async function atualizarCurtidas(feedbackId) {
+    try {
+        const response = await fetch(`/update-curtidas/${feedbackId}`, {
+            method: "PUT",
+        });
 
-  if (response.ok) {
-    // Atualize a interface do usuário conforme necessário
-    loadFeedbacks();
-  } else {
-    console.error("Erro ao atualizar curtidas.");
-  }
+        if (!response.ok) {
+            console.error("Erro ao atualizar curtidas.");
+        }
+    } catch (error) {
+        console.error("Erro ao processar requisição:", error);
+    }
 }
 
-// Atualize a função atualizarIcon() para chamar a função atualizarCurtidas()
-atualizarIcon = () => {
-  const caixas = [...document.querySelectorAll(".caixa")];
 
-  caixas.map((caixa) => {
-    caixa.addEventListener("click", (e) => {
-      e.preventDefault();
-      const icone = caixa.querySelector("i");
-      const espacoCurtidas = caixa.parentNode;
-      const feedbackId = espacoCurtidas.getAttribute("data-feedback-id");
 
+
+function atualizariconIndividual(item){
+    item.addEventListener("click",()=>{
+      const espacoCurtidas = item.parentNode;
+      const curtida = espacoCurtidas.querySelector("p.curtida");
+      const icone = item.querySelector("i");
       icone.classList.toggle("fa-regular");
       icone.classList.toggle("fa-solid");
 
       if (icone.classList.contains("fa-solid")) {
-        // Atualize o número de curtidas localmente antes de chamar a API
-        const numCurtidasElement = espacoCurtidas.querySelector(".curtida");
-        numCurtidasElement.innerHTML = `${Number(numCurtidasElement.innerHTML) + 1}`;
-        atualizarCurtidas(feedbackId);
+        curtida.innerHTML = `${Number(curtida.innerHTML) + 1}`;
       } else {
-        // Atualize o número de curtidas localmente antes de chamar a API
-        const numCurtidasElement = espacoCurtidas.querySelector(".curtida");
-        numCurtidasElement.innerHTML = `${Number(numCurtidasElement.innerHTML) - 1}`;
-        atualizarCurtidas(feedbackId);
+        curtida.innerHTML = `${Number(curtida.innerHTML) - 1}`;
       }
-    });
-  });
-};
-
-
-  atualizarIcon = () => {
+    })
+}
+/*   function atualizarIcon() {
     const caixas = [...document.querySelectorAll(".caixa")];
-
+   
     caixas.map((caixa) => {
       caixa.addEventListener("click", (e) => {
         e.preventDefault();
         const icone = caixa.querySelector("i");
+        
         const espacoCurtidas = caixa.parentNode;
         const curtida = espacoCurtidas.querySelector("p.curtida");
         icone.classList.toggle("fa-regular");
         icone.classList.toggle("fa-solid");
-        console.log(espacoCurtidas);
-        console.log(curtida);
+        
         if (icone.classList.contains("fa-solid")) {
           curtida.innerHTML = `${Number(curtida.innerHTML) + 1}`;
         } else {
           curtida.innerHTML = `${Number(curtida.innerHTML) - 1}`;
         }
-        console.log(icone);
+        
       });
     });
-  };
-
+  }; */
+ 
   async function loadFeedbacks() {
+    
     const response = await fetch("/feedbacks");
     const feedbacks = await response.json();
-    console.log(response);
+    listaDeFeedbacks = [];
+    
+    feedbacks.forEach((feedback) => {
+      listaDeFeedbacks.push(feedback);
+    });
+    listaDeFeedbacks.push(feedbacks)
+    
+    
     const feedContainer = document.getElementById("feed");
-    // feedContainer.innerHTML = '';
+    
+    
     const esquerda = document.querySelector(".esquerda");
     const direita = document.querySelector(".direita");
-    if (feedbacks.length > 0) {
-      feedContainer.setAttribute("class", "container bg-green p-4 mb-2");
-      //limpando erro de cards duplicados
-      esquerda.innerHTML = ''
-      direita.innerHTML =''
-      feedbacks.forEach((feedback, indice) => {
-        const card = FeedbackCard(feedback, indice);
-        //  feedContainer.appendChild(card)
+    let controlador = 0
 
+    if (listaDeFeedbacks.length > 0) {
+      
+      feedContainer.setAttribute("class", "container bg-green p-4 mb-2");
+      // esquerda.innerHTML = ''
+      // direita.innerHTML = ''
+      listaDeFeedbacks.forEach((item, indice) => {
+        if(!Array.isArray(item)){
+        const card = FeedbackCard(item, indice);
+        //  feedContainer.appendChild(card)
+        
         if (indice % 2 == 0) {
-          esquerda.appendChild(card);
+         
+         esquerda.appendChild(card);
+
+          
+          controlador++
         } else {
           direita.appendChild(card);
+          
+          controlador++
         }
-        atualizarIcon();
+        const selecao = card.querySelector(".row .espaco-curtidas .caixa")
+        //atualizarIcon();
+        atualizariconIndividual(selecao)
         contador++;
+      }
       });
+
+
+     
     }
-    const feedbackId = numCurtidas.getAttribute("id");
-    //identificando o feedback específico a ser atualizado
-    const numCurtidasElement = espacoCurtidas.querySelector(`#${feedbackId}`);
-    
-    // Atualizando o número de curtidas localmente antes de chamar a API
-    numCurtidasElement.innerHTML = `${Number(numCurtidasElement.innerHTML) + 1}`;
-    
-    // Chamando a função atualizarCurtidas passando feedbackId
-    atualizarCurtidas(feedbackId);
-
-
+   
   }
 
+
+  
 
 
 
@@ -134,7 +138,8 @@ atualizarIcon = () => {
     const span = document.createElement("span");
     span.setAttribute("class", "caixa bg-green p-3");
     span.setAttribute("style", "ax-width: 5rem; border-radius: 20px");
-    span.setAttribute("id", "caixa");
+    span.setAttribute("id", `caixa${indice}`);
+    
 
     const icon = document.createElement("i");
     icon.setAttribute("class", "fa-2x fa-regular fa-thumbs-up");
@@ -210,12 +215,14 @@ return -1
     if (response.ok) {
       loadFeedbacks();
       feedbackForm.reset();
+      //Olhar depois
+      
     } else {
       console.error("Erro ao adicionar feedback.");
     }
   });
 
-  atualizarIcon();
+ 
   loadFeedbacks();
 });
 
