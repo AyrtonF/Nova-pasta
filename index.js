@@ -29,7 +29,7 @@ db.connect((err) => {
   }
 });
 
-const feedbacks = [];
+let feedbacks = [];
 app.get("/feedbacks", (req, res) => {
   res.json(feedbacks);
   // Consulta o banco de dados para obter feedbacks
@@ -46,6 +46,7 @@ app.get("/feedbacks", (req, res) => {
 // Define uma rota para adicionar feedback
 app.post("/add-feedback", (req, res) => {
   const feedback = req.body;
+
   feedbacks.push(feedback);
 
   // Insere o feedback no banco de dados
@@ -88,8 +89,8 @@ app.get("/", (req, res) => {
 });
 
 
-const port = 3000;
+const port = process.env.PORT || 3000;
 // Inicia o servidor
-app.listen(process.env.PORT || port, () => {
+app.listen(port, () => {
   console.log(`Servidor está rodando na porta ${port}`);
 });
