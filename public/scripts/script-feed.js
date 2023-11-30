@@ -1,34 +1,90 @@
 
-
-atualizarIcon=() =>{
+// Função para atualizar o ícone e o contador de curtidas ao clicar na caixa
+function atualizarIcon() {
   const caixas = [...document.querySelectorAll(".caixa")];
-  
+
   caixas.map((caixa) => {
     caixa.addEventListener("click", (e) => {
       e.preventDefault();
       const icone = caixa.querySelector("i");
-      const espacoCurtidas = caixa.parentNode
-      const curtida = espacoCurtidas.querySelector("p.curtida")
+      const espacoCurtidas = caixa.parentNode;
+      const curtida = espacoCurtidas.querySelector("p.curtida");
+
+      // Alternar entre os ícones de curtida vazia e cheia
       icone.classList.toggle("fa-regular");
       icone.classList.toggle("fa-solid");
-  
-      if(icone.classList.contains("fa-solid")){
-        curtida.innerHTML = `${Number(curtida.innerHTML)+1}`
- 
-      } else{
-        curtida.innerHTML = `${Number(curtida.innerHTML)-1}`
-      
+
+      // Atualizar o contador de curtidas com base no ícone atual
+      if (icone.classList.contains("fa-solid")) {
+        curtida.innerHTML = `${Number(curtida.innerHTML) + 1}`;
+      } else {
+        curtida.innerHTML = `${Number(curtida.innerHTML) - 1}`;
       }
-   
-      
     });
   });
 }
-//import "./script.js";
 
+// Função para criar os elementos relacionados à curtida em um feedback
+function criarElementosCurtida(objetofeedback, indice) {
+  const pNome = document.createElement("h5");
+  pNome.className = "nome mb-3";
+  pNome.innerHTML = `${objetofeedback.nomePessoa}`;
 
+  const span = document.createElement("span");
+  span.className = "caixa bg-green p-3";
+  span.style = "ax-width: 5rem; border-radius: 20px; cursor:pointer;";
 
+  const icon = document.createElement("i");
+  icon.className = "fa-2x fa-regular fa-thumbs-up";
+  icon.style = "color: #ffffff";
+  span.appendChild(icon);
 
+  const numCurtidas = document.createElement("p");
+  numCurtidas.innerHTML = `${objetofeedback.numCurtidas}`;
+  numCurtidas.id = `curtida${indice}`;
+  numCurtidas.className = "curtida";
+  numCurtidas.style = "margin: -2px;";
+
+  const palavraCurtida = document.createElement("p");
+  palavraCurtida.innerHTML = "Curtidas";
+
+  return [pNome, span, numCurtidas, palavraCurtida];
+}
+
+// Função para criar um card de feedback
+function criarCard(objetofeedback, indice) {
+  const card = document.createElement("div");
+  card.className = "card bg-light pt-2 mb-4";
+  card.id = `card${indice}`;
+
+  const linha = document.createElement("div");
+  linha.className = "row ps-3";
+  card.appendChild(linha);
+
+  const colunaCurtidas = document.createElement("div");
+  colunaCurtidas.className = "espaco-curtidas col-md-4 d-flex align-items-center flex-column";
+
+  // Criar elementos relacionados à curtida e adicionar à coluna de curtidas
+  const elementosCurtida = criarElementosCurtida(objetofeedback, indice);
+  colunaCurtidas.append(...elementosCurtida);
+
+  const colunaFeedback = document.createElement("div");
+  colunaFeedback.className = "espaco-feedback col-md-7";
+
+  // Criar o texto do feedback e adicionar à coluna de feedback
+  const textFeedback = document.createElement("p");
+  textFeedback.className = "feedback";
+  textFeedback.id = `feedback${indice}`;
+  textFeedback.innerHTML = `${objetofeedback.feedback}`;
+  colunaFeedback.appendChild(textFeedback);
+
+  // Adicionar colunas ao card
+  linha.append(colunaCurtidas, colunaFeedback);
+
+  return card;
+}
+
+// Dados dos feedbacks
 
 const objeto1 = {
     nomePessoa: "Carlos Silva",
@@ -73,109 +129,34 @@ const objeto1 = {
   };
   
 
-  const listaDeFeedbacks2 = [objeto1, objeto2, objeto3, objeto4, objeto5, objeto6];
-  
+const listaDeFeedbacks2 = [objeto1, objeto2, objeto3, objeto4, objeto5, objeto6];
+
+
+// Verificar se há feedbacks para exibir 
 if (listaDeFeedbacks2.length > 0) {
-    //pegar conteiner e trocar a cor de fundo para aparecer
-    const container = document.querySelector("#feed")
-    container.classList.remove("d-none")
-    container.classList.add("bg-green")
-
-    // criar linha principal com suas classes e adicionar ao container
-    const linhaPrincipal = document.createElement("div")
-    linhaPrincipal.setAttribute("class","row linha-principal")
-    container.appendChild(linhaPrincipal)
-
-    // criando div esquerda e direita para dentro da linha principal
     
-    const esquerda = document.querySelector(".esquerda")
-    const direita = document.querySelector(".direita")
+    // Pegar o contêiner e trocar a cor de fundo para aparecer
+  const container = document.querySelector("#feed");
+  const titulo2 = document.querySelector(".tilulo2")
+  titulo2.classList.remove("d-none");
+  container.classList.remove("d-none");
+  container.classList.add("bg-green");
 
-    esquerda.setAttribute("class","col-md-6 esquerda")
-    direita.setAttribute("class","col-md-6 direita")
+  // Pegar as divs esquerda e direita para dentro da linha principal
+  const esquerda = document.querySelector(".esquerda");
+  const direita = document.querySelector(".direita");
 
-    linhaPrincipal.appendChild(esquerda)
-    linhaPrincipal.appendChild(direita)
+  // Para cada feedback, criar um card e adicionar à esquerda ou direita
+  listaDeFeedbacks2.map((objetofeedback, indice) => {
+    const card = criarCard(objetofeedback, indice);
+    (indice % 2 === 0 ? esquerda : direita).appendChild(card);
+  });
 
-
-    listaDeFeedbacks2.map((objetofeedback, indice)=>{
-        //criando card
-        const card = document.createElement("div")
-        card.setAttribute("class","card bg-light pt-2 mb-4")
-        card.setAttribute("id",`card${indice}`)
-        if (indice % 2 == 0) {
-            esquerda.appendChild(card)
-        }else{
-            direita.appendChild(card)
-        }
-        
-        //criando linha do card e adicionando ao card
-
-        const linha = document.createElement("div")
-        linha.setAttribute("class","row ps-3")
-        card.appendChild(linha)
-
-        //criando coluna das curtidas (esquerda)
-
-        const colunaCurtidas = document.createElement("div")
-        colunaCurtidas.setAttribute("class","espaco-curtidas col-md-4 d-flex align-items-center flex-column")
-        
-        
-        //criando nome da pessoa no card e adicionando a coluna de curtidas
-        const pNome = document.createElement("h5")
-        pNome.setAttribute("class","nome mb-3")
-        pNome.innerHTML = `${objetofeedback.nomePessoa}`
-        // criando span
-        const span = document.createElement("span")
-        span.setAttribute("class","caixa bg-green p-3")
-        span.setAttribute("style","ax-width: 5rem; border-radius: 20px")
-        //span.setAttribute("id","caixa")
-        // criando icone
-        const icon = document.createElement("i")
-        icon.setAttribute("class","fa-2x fa-regular fa-thumbs-up")
-        icon.setAttribute("style","color: #ffffff")
-        span.appendChild(icon)
-
-        //numero de curtidas
-
-        const numCurtidas = document.createElement("p")
-        numCurtidas.innerHTML = `${objetofeedback.numCurtidas}`
-        numCurtidas.setAttribute("id",`curtida${indice}`)
-        numCurtidas.setAttribute("class",`curtida`)
-        numCurtidas.setAttribute("style","margin: -2px;")
-
-        const palavraCurtida = document.createElement("p")
-        palavraCurtida.innerHTML = "Curtidas"
-
-
-
-        colunaCurtidas.appendChild(pNome)
-        colunaCurtidas.appendChild(span)
-        colunaCurtidas.appendChild(numCurtidas)
-        colunaCurtidas.appendChild(palavraCurtida)
-        
-
-
-         //criando coluna do feedback (direita)
-
-         const colunaFeedback = document.createElement("div")
-         colunaFeedback.setAttribute("class","espaco-feedback col-md-7")
-        //criando texto e adicionando a coluna de feedback
-         const textFeedback = document.createElement("p")
-         textFeedback.setAttribute("class","feedback")
-         textFeedback.setAttribute("id",`feedback${indice}`)
-         textFeedback.innerHTML = `${objetofeedback.feedback}`
-         colunaFeedback.appendChild(textFeedback)
-
-         //adicionando as duas colunas ao card
-         linha.appendChild(colunaCurtidas)
-         linha.appendChild(colunaFeedback)
-         
-    })
-    atualizarIcon()
+  // Chamar a função de atualização do ícone
+  atualizarIcon();
 }
 
 
-//Validação do formulário
+
 
 

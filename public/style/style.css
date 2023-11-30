@@ -96,7 +96,7 @@ font-family: 'Lato', sans-serif;
 
 #img-homemSorrindo {
   position: absolute;
-  width: 1350px;
+  width: 84rem;
   padding-left: 0px;
 }
 
@@ -133,9 +133,19 @@ font-family: 'Lato', sans-serif;
 .adicionar {
   border-radius: 5px;
   background-color: #f4d27b;
-  padding: 0.9%;
+  padding: 2%;
   cursor: pointer;
   font-weight: bold;
+}
+.anexo{
+  width: 25%;
+}
+
+.elemento-anexo{
+  border-radius: 5px;
+  background-color: #f4d27b;
+  font-weight: bold;
+  cursor: pointer;
 }
 
 input[type="file"] {
@@ -166,15 +176,16 @@ input[type="file"] {
 /*botão de anexo*/
 
 /* barra de pesquisa feed*/
-#search_div {
+#divPesquisa {
   position: relative;
   width: 94%;
 }
 
-#search_bar,
-#bt_bar {
+#barraPesquisa,
+#btnBarra {
   border-color: #04a8a8;
 }
+
 
 #icone-pesquisar {
   color: #04a8a8;
@@ -183,6 +194,7 @@ input[type="file"] {
 
 /* Filtro */
 #filtro {
+  cursor: pointer;
   background-color: #04a8a8;
   height: 10vh;
 }
@@ -218,14 +230,6 @@ input[type="file"] {
   flex-direction: row;
   text-align: right;
 }
-/* classe para personalização dos ícones (manter comentado por enquanto)
-.background-color-icons {
-  background-color: #f8f8f8;
-  color: #04a8a8;
-  font-size: 1.8em;
-  text-align: center;
-}
- */
 
 @media (max-width: 550px) {
   #img-homemSorrindo {

@@ -35,16 +35,16 @@
   </head>
 
   <body>
-<!-- Bruno e Abner (navbar) -->
+<!-- Navbar -->
 
     <nav id="navbar" class="navbar fixed-top navbar-expand-lg bg-light">
-      <div class="container">
+      <div class="container bg-light">
         <a class="navbar-brand" href="#">
           <img id="img-logo" src="..\images\acqio-logo.png" alt="">
         </a>
     
         <!-- Botão de Toggler -->
-        <button class="navbar-toggler custom-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#items-menu, #redes" aria-controls="items-menu, redes" aria-expanded="false" aria-label="Toggle navigation">
+        <button class="navbar-toggler  custom-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#items-menu, #redes" aria-controls="items-menu, redes" aria-expanded="false" aria-label="Toggle navigation">
           <span class="navbar-toggler-icon"></span>
         </button>
   
@@ -118,7 +118,7 @@
                 <div class="w-5" id="line"></div>
         
                 <!-- Dropdown de Categoria -->
-                <div class="d-flex justify-content-end mb-4 mt-3">
+                <div class="d-flex justify-content-start mb-4 mt-3">
                   <select
                   class="form-select-md p-2 rounded"
                   id="categoria"
@@ -156,7 +156,7 @@
                 </div>
     
                 <!-- Descrição -->
-                <div class="mb-4">
+                <div class="mb-5">
                   <div class="form-outline">
                     <textarea name="descricao" id="descricao" cols="30" rows="3" class="form-control" required></textarea>
                     <label for="descricao" class="form-label">Digite seu feedback</label>
@@ -165,7 +165,7 @@
                 </div>
     
                 <!-- Sugestão -->
-                <div class="mb-4">
+                <div class="mb-5">
                   <div class="form-outline">
                     <textarea name="sugestao" id="sugestao" class="form-control" cols="30" rows="3"></textarea>
                     <label for="sugestao" class="form-label">Deixe a sua sugestão para a sua ideia</label>
@@ -173,11 +173,14 @@
                 </div>
                  <!-- Botão de Anexo -->
                 <div class="justify-content-start d-flex anexos">
-                  <label for="adicionar-input" class="mb-5 adicionar " style="margin-right: 0.5rem;">
-                    <i  class="icone-anexo fas fa-paperclip mr-1" ></i>Anexo
-                  </label>
-                  <input type="file" onchange="lerArquivo()" id="adicionar-input" multiple accept=".txt">
-                  
+                  <div class="anexo">
+                    <label for="adicionar-input" class="mb-4 adicionar "  style="margin-right: 0.5rem;">
+                      <i  class="icone-anexo fas fa-paperclip mr-1" ></i>Anexo
+                    </label>
+                    <input type="file" onchange="lerArquivo()" id="adicionar-input" multiple accept=".pdf">
+                  </div>
+                  <!-- <label class="mb-5 elemento-anexo " style="margin-right: 0.5rem">teste.txt<span class="icone-anexo"><i class="fechar-icone fas fa-times mr-1" aria-hidden="true"></i></span></label> -->
+                 
                 </div>
                 
                 <!-- Botão de Enviar -->
@@ -193,19 +196,21 @@
 
 
     <div class="container mt-2 mb-2 d-flex justify-content-center">
-      <p class="titulo-black text-dark"> Alguns Feedbacks</p>
+      <p class="titulo-black text-dark tilulo2 d-none"> Alguns Feedbacks</p>
     </div>
   
     <!--<feed>-->
+
+      
       
       <div id="feed" class=" container d-none mt-4 p-4 mb-2">
        
         <div class="row mb-3">
         <!--Barra de pesquisa (Bruno K.)-->
-      <div id="search_div" class="container-fluid mt-4 mb-4 justify-content-center">
+      <div id="divPesquisa" class="container-fluid mt-4 mb-4 justify-content-center">
         <form class="d-flex" role="search" >
-        <input id="search_bar" class="form-control me-2" type="search" placeholder="Buscar feedback" aria-label="Search" >
-        <button id="bt_bar" class="btn" type="submit"><i id="icone-pesquisar" class="fa-solid fa-magnifying-glass" style="color: white;"></i></button>
+        <input id="barraPesquisa" class="form-control me-2" type="search" placeholder="Buscar feedback" aria-label="Search" >
+        <a href="#feed"><button id="btnBarra" class="btn" type="submit"><i id="icone-pesquisar" class="fa-solid fa-magnifying-glass" style="color: white;"></i></button></a>
         </form>
       </div> 
       <div id="filtro" class="container p-4">
@@ -219,15 +224,13 @@
     </div>
     </div>
 
-
-
-       <div class="row linha-principal">
+      <div id="cards" class="row linha-principal">
         <div class="col-md-6 esquerda"></div>
         <div class="col-md-6 direita"></div>
       </div>
     <!--</feed>-->
       </div>
-    <!-- <Bruna Anthony>-->
+    <!-- <Footer>-->
     <footer class="bg-green text-center text-lg-start bottom-0 w-100">
       <div>
         <div class="text-center p-3">
@@ -246,15 +249,13 @@
         </div>
       </div>
     </footer>
+    <!-- </footer>-->
 
-    <!-- </Bruna Anthony>-->
     <script
       src="https://kit.fontawesome.com/e478d725a2.js"
       crossorigin="anonymous"
     >
   </script>
-  <!-- Abner e Bruno -->
-
 
 <script>
 $(document).ready(function() {
