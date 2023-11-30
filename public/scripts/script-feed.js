@@ -90,42 +90,42 @@ const objeto1 = {
     nomePessoa: "Carlos Silva",
     nomeMaquineta: "Maquineta X",
     numCurtidas: 15,
-    feedback: "Estou muito satisfeito com a Maquineta X! É fácil de usar e eficiente. Recomendo a todos."
+    feedback: "Utilizo a maquineta da Aqcio há seis meses e estou muito satisfeita com a performance. A facilidade de uso e a rapidez nas transações tornaram meu dia a dia mais eficiente. Além disso, o suporte ao cliente é ágil e eficaz. Recomendo!"
   };
   
   const objeto2 = {
     nomePessoa: "Ana Souza",
     nomeMaquineta: "Maquineta Y",
     numCurtidas: 12,
-    feedback: "A Maquineta Y é boa, mas poderia ter uma melhor interface. No entanto, o suporte ao cliente é excelente."
+    feedback: "Como empresário, a escolha da maquineta de cartão certa é crucial. Optei pela Aqcio e não me arrependi. A tecnologia avançada proporciona transações seguras, e a integração com o sistema da minha empresa foi fácil. Ótimo investimento!"
   };
   
   const objeto3 = {
     nomePessoa: "Rafael Oliveira",
     nomeMaquineta: "Maquineta Z",
     numCurtidas: 18,
-    feedback: "Estou impressionado com a qualidade do serviço da Empresa Z Maquinetas. A maquineta deles é confiável e o atendimento ao cliente é rápido."
+    feedback: ""O diferencial da Aqcio vai além da tecnologia. Tive um pequeno problema de configuração, e a equipe de suporte resolveu rapidamente. A atenção ao cliente é evidente, o que me faz confiar na marca. Parabéns à Aqcio pelo excelente atendimento!"
   };
   
   const objeto4 = {
     nomePessoa: "Larissa Santos",
     nomeMaquineta: "Maquineta ABC",
     numCurtidas: 20,
-    feedback: "A Maquineta ABC superou minhas expectativas! A velocidade de transação é incrível e o design é moderno. Estou muito feliz com minha escolha."
+    feedback: "Desde que adotei a maquineta da Aqcio, percebi um aumento significativo na eficiência dos pagamentos. A velocidade das transações é impressionante, e meus clientes sempre elogiam a praticidade. Recomendo para qualquer negócio!"
   };
   
   const objeto5 = {
     nomePessoa: "Pedro Lima",
     nomeMaquineta: "Maquineta XYZ",
     numCurtidas: 25,
-    feedback: "Tive uma ótima experiência com a Empresa de Maquinetas XYZ. O equipamento deles é estável e o suporte técnico é prestativo. Definitivamente, voltarei a fazer negócios com eles."
+    feedback: "Embora a maquineta da Aqcio tenha se mostrado eficaz em muitos aspectos, sinto que a interface do usuário poderia ser mais intuitiva. Algumas melhorias na navegação do menu facilitariam ainda mais o uso diário."
   };
   
   const objeto6 = {
     nomePessoa: "Renato Cariani",
     nomeMaquineta: "Maquineta WPY",
     numCurtidas: 50,
-    feedback: "Tive uma ótima experiência com a Empresa de Maquinetas XYZ. O equipamento deles é estável e o suporte técnico é prestativo. Definitivamente, voltarei a fazer negócios com eles."
+    feedback: "Em eventos ao ar livre, muitas vezes enfrento problemas de conectividade. Seria incrível se a maquineta da Aqcio pudesse operar em modo offline, armazenando transações para processamento posterior quando a conexão for restaurada."
   };
   
 
