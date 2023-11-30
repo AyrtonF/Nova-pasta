@@ -90,14 +90,14 @@ const objeto1 = {
     nomePessoa: "Carlos Silva",
     nomeMaquineta: "Maquineta X",
     numCurtidas: 15,
-    feedback: "Utilizo a maquineta da Aqcio há seis meses e estou muito satisfeita com a performance. A facilidade de uso e a rapidez nas transações tornaram meu dia a dia mais eficiente. Além disso, o suporte ao cliente é ágil e eficaz. Recomendo!"
+    feedback: "Utilizo a maquineta da Aqcio há seis meses e estou muito satisfeito com a performance. A facilidade de uso e a rapidez nas transações tornaram meu dia a dia mais eficiente. Além disso, o suporte ao cliente é ágil e eficaz. Recomendo!"
   };
   
   const objeto2 = {
     nomePessoa: "Ana Souza",
     nomeMaquineta: "Maquineta Y",
     numCurtidas: 12,
-    feedback: "Como empresário, a escolha da maquineta de cartão certa é crucial. Optei pela Aqcio e não me arrependi. A tecnologia avançada proporciona transações seguras, e a integração com o sistema da minha empresa foi fácil. Ótimo investimento!"
+    feedback: "Como empresária, a escolha da maquineta de cartão certa é crucial. Optei pela Aqcio e não me arrependi. A tecnologia avançada proporciona transações seguras, e a integração com o sistema da minha empresa foi fácil. Ótimo investimento!"
   };
   
   const objeto3 = {
@@ -111,14 +111,14 @@ const objeto1 = {
     nomePessoa: "Larissa Santos",
     nomeMaquineta: "Maquineta ABC",
     numCurtidas: 20,
-    feedback: "Desde que adotei a maquineta da Aqcio, percebi um aumento significativo na eficiência dos pagamentos. A velocidade das transações é impressionante, e meus clientes sempre elogiam a praticidade. Recomendo para qualquer negócio!"
+    feedback: "Desde que adotei a maquineta da Aqcio, percebi um aumento significativo na eficiência dos pagamentos. A velocidade das transações é impressionante, e meus clientes sempre elogiam a praticidade. Recomendo para qualquer negócio, estou muito satisfeita!"
   };
   
   const objeto5 = {
     nomePessoa: "Pedro Lima",
     nomeMaquineta: "Maquineta XYZ",
     numCurtidas: 25,
-    feedback: "Embora a maquineta da Aqcio tenha se mostrado eficaz em muitos aspectos, sinto que a interface do usuário poderia ser mais intuitiva. Algumas melhorias na navegação do menu facilitariam ainda mais o uso diário."
+    feedback: "Embora a maquineta da Aqcio tenha se mostrado eficaz em muitos aspectos, sinto que a interface do usuário poderia ser mais intuitiva. Algumas melhorias na navegação do menu facilitariam ainda mais o uso diário, pois as vezes preciso de um pouco mais de praticidade."
   };
   
   const objeto6 = {
