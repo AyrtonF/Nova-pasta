@@ -104,7 +104,7 @@ const objeto1 = {
     nomePessoa: "Rafael Oliveira",
     nomeMaquineta: "Maquineta Z",
     numCurtidas: 18,
-    feedback: ""O diferencial da Aqcio vai além da tecnologia. Tive um pequeno problema de configuração, e a equipe de suporte resolveu rapidamente. A atenção ao cliente é evidente, o que me faz confiar na marca. Parabéns à Aqcio pelo excelente atendimento!"
+    feedback: "O diferencial da Aqcio vai além da tecnologia. Tive um pequeno problema de configuração, e a equipe de suporte resolveu rapidamente. A atenção ao cliente é evidente, o que me faz confiar na marca. Parabéns à Aqcio pelo excelente atendimento!"
   };
   
   const objeto4 = {
