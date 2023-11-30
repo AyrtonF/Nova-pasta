@@ -3,7 +3,6 @@ const bodyParser = require("body-parser");
 const path = require("path");
 const mysql = require("mysql2");
 
-
 const app = express();
 
 // Serve arquivos estáticos do diretório 'public'
@@ -61,8 +60,6 @@ app.post("/add-feedback", (req, res) => {
   });
 });
 
-
-
 app.put("/update-curtidas/:id", (req, res) => {
   const feedbackId = req.params.id;
 
@@ -76,21 +73,18 @@ app.put("/update-curtidas/:id", (req, res) => {
         res.status(500).json({ error: "Erro interno do servidor" });
       } else {
         res.sendStatus(200);
-        console.log(result);
       }
     }
   );
 });
-
 
 // Define uma rota padrão para servir o arquivo index.html
 app.get("/", (req, res) => {
   res.sendFile(path.join(__dirname, "./public/pages", "index.html"));
 });
 
-
 const port = process.env.PORT || 3000;
 // Inicia o servidor
 app.listen(port, () => {
-  console.log(`Servidor está rodando na porta ${port}`);
+  //console.log(`Servidor está rodando na porta ${port}`);
 });
