@@ -24,7 +24,7 @@ function lerArquivo() {
 
       const criarLabel = (texto) => {
         const label = document.createElement("label");
-        label.setAttribute("class", "mb-4 adicionar ");
+        label.setAttribute("class", "mb-3 adicionar ");
         label.setAttribute("style", "margin-right: 0.5rem");
 
         const textoNode = document.createTextNode(texto);
