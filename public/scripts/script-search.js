@@ -1,6 +1,6 @@
 // Função para exibir um alerta na interface
 function exibirAlerta(mensagem) {
-  const searchDiv = document.querySelector("#search_div");
+  const searchDiv = document.querySelector("#divPesquisa");
   const textoHtml = document.createElement("p");
 
   textoHtml.innerHTML = mensagem;
@@ -13,7 +13,7 @@ function exibirAlerta(mensagem) {
 
 // Função para remover alerta da interface
 function retirarAlerta() {
-  const searchDiv = document.querySelector("#search_div");
+  const searchDiv = document.querySelector("#divPesquisa");
   const primeiroFilho = searchDiv.lastElementChild;
 
   if (primeiroFilho !== null && primeiroFilho.tagName.toLowerCase() === "p") {
@@ -25,7 +25,7 @@ function retirarAlerta() {
 
 // Função principal para filtrar feedbacks
 function buscarFeedback() {
-  const pesquisa = document.querySelector("#search_bar");
+  const pesquisa = document.querySelector("#barraPesquisa");
   const feed = document.querySelector("#feed");
   const filtroSelect = document.querySelector(".form-select");
 
